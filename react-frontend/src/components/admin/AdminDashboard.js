@@ -1,7 +1,20 @@
-import React from 'react'
+
 import AdminSidebar from '../layouts/sidebar/AdminSidebar'
+import React, { useEffect, useState } from "react";
 
 const Dashboard = () => {
+    const [cusSearch, setCusSearch] = useState('');
+    const [cusList, setCusList] = useState([]);
+    useEffect(() => {
+        fetch(`https://localhost:44398/api/CustomerService/AllCustomers`).then(
+            (response) => {
+                response.json().then((result) => {
+                    setCusList(result);
+                });
+            }
+        );
+    }, []);
+    console.log(cusList);
     return (
         <>
         <AdminSidebar/>  
@@ -290,8 +303,8 @@ const Dashboard = () => {
                         <table>
                             <thead>
                                 <tr class="row100 head">
+                                    <th class="cell100 column3">Customer ID</th>
                                     <th class="cell100 column2">Name</th>
-                                    <th class="cell100 column3">Email</th>
                                     <th class="cell100 column4">Address</th>
                                     <th class="cell100 column5">Request Date</th>
                                     <th class="cell100 column6">Pet Details</th>
@@ -300,18 +313,15 @@ const Dashboard = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var item in Model.petbucket_request_details)
-                                {
                                 <tr class="row100 body">
-                                    <td class="cell100 column2">@item.name</td>
-                                    <td class="cell100 column3">@item.email</td>
-                                    <td class="cell100 column4">@item.address</td>
-                                    <td class="cell100 column5">@item.date</td>
-                                    <td class="cell100 column6">@item.petdetails</td>
-                                    <td class="cell100 column2">@item.duration</td>
-                                    <td class="cell100 column5">@item.requestdetails</td>
+                                    <td class="cell100 column2"></td>
+                                    <td class="cell100 column3"></td>
+                                    <td class="cell100 column4"></td>
+                                    <td class="cell100 column5"></td>
+                                    <td class="cell100 column6"></td>
+                                    <td class="cell100 column2"></td>
+                                    <td class="cell100 column5"></td>
                                 </tr>
-                                }
                             </tbody>
                         </table>
                     </div>
@@ -335,7 +345,12 @@ const Dashboard = () => {
                             <div class="card-body cleartfix">
                                 <h4 style={{"text-align":"center"}}>New Customer</h4>
                                 <hr />
+                                <div class="search-box">
+                                    <i class="material-icons">&#xE8B6;</i>
+                                    <input type="text" class="form-control" placeholder="Search&hellip;" onChange={e => {setCusSearch(e.target.value)}}/>
+                                </div>
                                 <div class="media align-items-stretch">
+                                    
                                     <div class="table100 ver1">
                                         <div class="table100-nextcols">
                                             <table>
@@ -348,15 +363,29 @@ const Dashboard = () => {
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach (var item in Model.petbucket_customer)
+                                                {cusList.filter((val) => {
+                                                if (cusSearch === "") {
+                                                    return val
+                                                }
+                                                    else if (val.name.toLowerCase().includes(cusSearch.toLowerCase()))
                                                     {
-                                                    <tr>
-                                                        <td class="cell100 column1">@item.id</td>
-                                                        <td class="cell100 column2">@item.name</td>
-                                                        <td class="cell100 column3">@item.email</td>
-                                                        <td class="cell100 column4">@item.phone</td>
-                                                    </tr>
+                                                        return val
+                                                    }else if (val.phone.includes(cusSearch))
+                                                    {
+                                                        return val
                                                     }
+                                                    
+                                                    }).map((u,id) => {
+                                                    return (
+                                                    <tr>
+                                                        <td class="cell100 column1">{u.id}</td>
+                                                        <td class="cell100 column2">{u.name}</td>
+                                                        <td class="cell100 column3">{u.email}</td>
+                                                        <td class="cell100 column4">{u.phone}</td>
+                                                    </tr> 
+                                                        );                     
+                                                            })
+                                                }                                                      
                                                 </tbody>
                                             </table>
                                         </div>

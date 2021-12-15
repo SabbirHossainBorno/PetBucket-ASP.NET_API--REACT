@@ -26,6 +26,8 @@ import UserDetails from "./components/admin/UserDetails";
 import UserEdit from "./components/admin/UserEdit";
 import AdminProfileEdit from "./components/admin/AdminProfileEdit";
 import UserDelete from "./components/admin/UserDelete";
+import RequestDetails from "./components/admin/RequestDetails";
+import ProfitDetails from "./components/admin/ProfitDetails";
 
 //-------------END--------------------
 
@@ -138,6 +140,14 @@ function App() {
     {/* ----------------------------------ADMIN---------------------------------- */}
     <Route exact path="/AdminDashboard" >
       <AdminDashboard />
+    </Route>
+
+    <Route exact path="/RequestDetails" >
+      <RequestDetails />
+    </Route>
+
+    <Route exact path="/ProfitDetails" >
+      <ProfitDetails />
     </Route>
 
     {/* ADMIN------ADD USER */}
