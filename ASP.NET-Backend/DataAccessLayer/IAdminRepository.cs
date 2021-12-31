@@ -9,6 +9,7 @@ namespace DataAccessLayer
     public interface IAdminRepository<T, ID>
     {
         void Edit(T p);
+        List<T> GetAll();
         T GetById(ID id);
 
     }

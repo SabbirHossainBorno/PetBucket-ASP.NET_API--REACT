@@ -45,6 +45,7 @@
     <Compile Include="AgencyModel.cs" />
     <Compile Include="CustomerModel.cs" />
     <Compile Include="PetSitterModel.cs" />
+    <Compile Include="ProfitDetailsModel.cs" />
     <Compile Include="RequestTableModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -10,9 +10,10 @@ using System.Web.Http.Cors;
 
 namespace ASP.NET_Backend.Controllers
 {
+    [EnableCors("*", "*", "*")]
     public class CustomerController:ApiController
     {
-        [EnableCors("*", "*", "*")]
+        
         [Route("api/CustomerService/AllCustomers")]
         [HttpGet]
         public List<CustomerModel> GetAll()
@@ -33,6 +34,7 @@ namespace ASP.NET_Backend.Controllers
         {
             CustomerService.Add(customer);
         }
+        [EnableCors("*", "*", "*")]
         //route for editing a customer by id
         [Route("api/CustomerService/EditCustomer")]
         [HttpPut]

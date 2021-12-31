@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "4c20b6dc-7174-40ad-926c-a82be51aba96": {
+      "ProjectGuid": "4c20b6dc-7174-40ad-926c-a82be51aba96",
+      "DisplayName": "ASP.NET-Backend",
+      "ColorIndex": 0
+    },
+    "66203321-f0c9-4aef-814b-72443868d9a3": {
+      "ProjectGuid": "66203321-f0c9-4aef-814b-72443868d9a3",
+      "DisplayName": "DataAccessLayer",
+      "ColorIndex": 1
+    },
+    "5b2a0570-fec8-4ca1-8460-f2500b843a6d": {
+      "ProjectGuid": "5b2a0570-fec8-4ca1-8460-f2500b843a6d",
+      "DisplayName": "BusinessEntityLayer",
+      "ColorIndex": 2
+    },
+    "3bd9bccf-22ca-4bd8-b5be-6b03cea73383": {
+      "ProjectGuid": "3bd9bccf-22ca-4bd8-b5be-6b03cea73383",
+      "DisplayName": "BusinessLogicLayer",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}

@@ -22,8 +22,12 @@ import AdminDashboard from "./components/admin/AdminDashboard";
 import AddUser from "./components/admin/AddUser";
 import AdminDetails from "./components/admin/AdminDetails";
 import UserList from "./components/admin/UserList";
-import UserDetails from "./components/admin/UserDetails";
-import UserEdit from "./components/admin/UserEdit";
+import CustomerDetails from "./components/admin/CustomerDetails";
+import PetSitterDetails from "./components/admin/PetSitterDetails";
+import AgencyDetails from "./components/admin/AgencyDetails";
+import CustomerEdit from "./components/admin/CustomerEdit";
+import PetSitterEdit from "./components/admin/PetSitterEdit";
+import AgencyEdit from "./components/admin/AgencyEdit";
 import AdminProfileEdit from "./components/admin/AdminProfileEdit";
 import UserDelete from "./components/admin/UserDelete";
 import RequestDetails from "./components/admin/RequestDetails";
@@ -189,7 +193,7 @@ function App() {
     children=
     {
       <UserList
-        header="Customer List"
+
         title="All Customer Details"
         DetailsLink="/CustomerDetails"
         EditLink="/CustomerEdit"
@@ -203,7 +207,6 @@ function App() {
     children=
     {
       <UserList
-      header="Pet Sitter List"
         title="All Pet Sitter Details"
         DetailsLink="/PetSitterDetails"
         EditLink="/PetSitterEdit"
@@ -228,10 +231,10 @@ function App() {
 
     {/* ADMIN------USER DETAILS */}
 
-    <Route exact path="/CustomerDetails"
+    <Route exact path="/CustomerDetails/:id"
     children=
     {
-      <UserDetails
+      <CustomerDetails
       header="Customer Details"
       link="/CustomerList"
         title="Customer Details"
@@ -239,10 +242,10 @@ function App() {
     }
     > 
     </Route>
-    <Route exact path="/PetSitterDetails"
+    <Route exact path="/PetSitterDetails/:id"
     children=
     {
-      <UserDetails
+      <PetSitterDetails
       header="Pet Sitter Details"
       link="/PetSitterList"
         title="Pet Sitter Details"
@@ -250,10 +253,10 @@ function App() {
     }
     > 
     </Route>
-    <Route exact path="/AgencyDetails"
+    <Route exact path="/AgencyDetails/:id"
     children=
     {
-      <UserDetails
+      <AgencyDetails
       header="Agency Details"
       link="/AgencyList"
         title="Agency Details"
@@ -265,10 +268,10 @@ function App() {
 
     {/* ADMIN------USER EDIT */}
 
-    <Route exact path="/CustomerEdit"
+    <Route exact path="/CustomerEdit/:id"
     children=
     {
-      <UserEdit
+      <CustomerEdit
       link="/CustomerList"
         title="Customer Edit"
         buttonName="Update"
@@ -276,10 +279,10 @@ function App() {
     }
     > 
     </Route>
-    <Route exact path="/PetSitterEdit"
+    <Route exact path="/PetSitterEdit/:id"
     children=
     {
-      <UserEdit
+      <PetSitterEdit
       link="/PetSitterList"
         title="Pet Sitter Edit"
         buttonName="Update"
@@ -287,10 +290,10 @@ function App() {
     }
     > 
     </Route>
-    <Route exact path="/AgencyEdit"
+    <Route exact path="/AgencyEdit/:id"
     children=
     {
-      <UserEdit
+      <AgencyEdit
       link="/AgencyList"
         title="Agency Edit"
         buttonName="Update"
@@ -301,7 +304,7 @@ function App() {
 
     {/* ADMIN------USER DELETE */}
 
-    <Route exact path="/CustomerDelete"
+    <Route exact path="/CustomerDelete/:id"
     children=
     {
       <UserDelete
@@ -312,7 +315,7 @@ function App() {
     }
     > 
     </Route>
-    <Route exact path="/PetSitterDelete"
+    <Route exact path="/PetSitterDelete/:id"
     children=
     {
       <UserDelete
@@ -323,7 +326,7 @@ function App() {
     }
     > 
     </Route>
-    <Route exact path="/AgencyDelete"
+    <Route exact path="/AgencyDelete/:id"
     children=
     {
       <UserDelete

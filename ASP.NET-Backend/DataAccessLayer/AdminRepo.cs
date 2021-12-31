@@ -14,6 +14,11 @@ namespace DataAccessLayer
             this.db = db;
         }
 
+        public List<Admin> GetAll()
+        {
+            return db.Admins.ToList();
+        }
+
         public void Edit(Admin p)
         {
             var req = db.Admins.FirstOrDefault(x => x.id == p.id);

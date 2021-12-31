@@ -14,7 +14,6 @@ namespace BusinessEntityLayer
         public string password { get; set; }
         public string address { get; set; }
         public string nid { get; set; }
-        public decimal balance { get; set; }
         public string phone { get; set; }
     }
 }

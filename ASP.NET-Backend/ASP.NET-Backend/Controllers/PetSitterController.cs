@@ -10,9 +10,9 @@ using System.Web.Http.Cors;
 
 namespace ASP.NET_Backend.Controllers
 {
+    [EnableCors("*", "*", "*")]
     public class PetSitterController : ApiController
-    {
-        [EnableCors("*", "*", "*")]
+    {      
         [Route("api/PetSitterService/AllPetSitter")]
         [HttpGet]
         public List<PetSitterModel> GetAll()
@@ -20,7 +20,7 @@ namespace ASP.NET_Backend.Controllers
             return PetSitterService.GetAll();
         }
         //route for getting a petsitter by id
-        [Route("api/AgencyService/PetSitter/{id}")]
+        [Route("api/PetSitterService/PetSitter/{id}")]
         [HttpGet]
         public PetSitterModel Get(int id)
         {

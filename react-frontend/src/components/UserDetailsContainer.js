@@ -1,6 +1,45 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 
 const UserDetailsContainer = (props) => {
+    var userID=1;
+    const [userData, setUserData] = useState({
+      name: '',
+      phone: '',
+      address: '',
+      email: '',
+      nid: '',
+      password: '',
+      
+  });
+  
+  useEffect(() => {
+      fetch(`https://localhost:44398/api/CustomerService/Customer/${userID}`).then(
+          (response) => {
+              response.json().then((result) => {
+                setUserData({ 
+                  name: result.name.trim(),
+                  phone:  result.phone.trim(),
+                  address:  result.address.trim(),
+                  email:  result.email.trim(),
+                  nid:  result.nid.trim(),
+                  password:  result.password.trim(),
+                 })
+                
+                
+              });
+          }
+      );
+  }, [userID]);
+  
+  const handleInputChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setUserData({  ...userData,[name]: [value]})
+    console.log(name, value);
+    
+  }
+  console.log(userData);
+
     return (
         <>
                         <section id="stats-subtitle">
@@ -24,6 +63,7 @@ const UserDetailsContainer = (props) => {
                         </tr>
                         <tr>
                             <td class="primary">Address</td>
+                            <td className='danger' >{userData.address}</td>
                             {/* <td class="danger">@Html.DisplayFor(model => model.address)</td> */}
                         </tr>
                         <tr>

@@ -16,6 +16,13 @@ namespace ASP.NET_Backend.Controllers
     [EnableCors("*", "*", "*")]
     public class AdminController : ApiController
     {
+        [Route("api/AdminService/AllAdmin")]
+        [HttpGet]
+        public List<AdminModel> GetAll()
+        {
+            return AdminService.GetAll();
+        }
+
         //route for editing a admin by id
         [Route("api/AdminService/Admin/{id}")]
         [HttpGet]
@@ -31,5 +38,12 @@ namespace ASP.NET_Backend.Controllers
         {
             AdminService.Edit(admin);
         }
+
+        //[Route("api/AdminService/ProfitDetails")]
+        //[HttpGet]
+        //public List<ProfitDetailsModel> GetAllProfit()
+        //{
+        //    return AdminService.GetAllProfit();
+        //}
     }
 }
